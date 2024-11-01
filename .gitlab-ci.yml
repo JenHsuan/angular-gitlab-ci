@@ -1,10 +1,20 @@
-stages:                           
-  - Welcome_test_cicd                   
+stages:
+  - build
+  - test
 
-Job_Hello_world:                  
-  tags:                           
-    - test                   
-  stage: Welcome_test_cicd              
-  image: python:3.9.13           
-  script:                         
-    - python3 -V 
+build_nodejs_app:
+  stage: build
+  image: node:lts-alpine
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+test_nodejs_app:
+  stage: test
+  image: node:lts-alpine
+  script:
+    - npm install
+    - npm run test
