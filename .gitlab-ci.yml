@@ -1,0 +1,10 @@
+stages:                           
+  - Welcome_test_cicd                   
+
+Job_Hello_world:                  
+  tags:                           
+    - test                   
+  stage: Welcome_test_cicd              
+  image: python:3.9.13           
+  script:                         
+    - python3 -V 
