@@ -6,6 +6,24 @@ cache:
 
 stages:
   - build
+  - test
+
+unit test:
+  stage: test
+  before_script:
+    - apt-get update
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - apt install -y ./google-chrome*.deb;
+    - export CHROME_BIN=/usr/bin/google-chrome
+    - npm install -g @angular/cli@11.2.19
+
+  script:
+    - npm ci --legacy-peer-deps
+    - npm run test:ci
+
+  artifacts:
+    reports:
+      junit: unit-test-results.xml
 
 build:
   stage: build

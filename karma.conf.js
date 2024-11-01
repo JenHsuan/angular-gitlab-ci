@@ -10,7 +10,8 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-junit-reporter'),
     ],
     client: {
       jasmine: {
@@ -31,8 +32,25 @@ module.exports = function (config) {
         { type: 'text-summary' }
       ]
     },
-    reporters: ['progress', 'kjhtml'],
-    browsers: ['Chrome'],
+    reporters: ['progress', 'kjhtml', 'junit'],
+    junitReporter: {
+      outputDir: '',
+      outputFile: 'unit-test-results.xml',
+      suite: '',
+      useBrowserName: false,
+      nameFormatter: undefined,
+      classNameFormatter: undefined,
+      properties: {}
+    },
+    browsers: ['Chrome', 'ChromeHeadlessCI'],
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: [
+          '--no-sandbox'
+        ]
+      }
+    },
     restartOnFileChange: true
   });
 };
