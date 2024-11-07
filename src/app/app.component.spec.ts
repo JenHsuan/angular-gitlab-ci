@@ -28,12 +28,12 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-ci');
   });
 
-  // it('Retrieve test element with debugElement.query', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
+  it('Retrieve test element with debugElement.query', () => {
+    const fixture = TestBed.createComponent(AppComponent);
 
-  //   let testField = fixture.debugElement.query(By.css('[id="test"]')).nativeElement;
-  //   expect(testField.innerHTML).toBeTruthy("test");
-  // });
+    let testField = fixture.debugElement.query(By.css('[id="test"]')).nativeElement;
+    expect(testField.innerHTML).toBeTruthy("test");
+  });
 
   // it('Retrieve test element with nativeElement.querySelector', () => {
   //   const fixture = TestBed.createComponent(AppComponent);
