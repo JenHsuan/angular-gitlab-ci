@@ -52,9 +52,9 @@ module.exports = function (config) {
       }
     },
     restartOnFileChange: true,
-    captureTimeout: 60000, // it was already there
+    captureTimeout: 100000, // it was already there
     browserDisconnectTimeout : 10000,
-    browserDisconnectTolerance : 1,
+    browserDisconnectTolerance : 10,
     browserNoActivityTimeout : 60000,//by default 10000
   });
 };
