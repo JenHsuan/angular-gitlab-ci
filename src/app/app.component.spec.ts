@@ -35,10 +35,10 @@ describe('AppComponent', () => {
     expect(testField.innerHTML).toBeTruthy("test");
   });
 
-  // it('Retrieve test element with nativeElement.querySelector', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
+  it('Retrieve test element with nativeElement.querySelector', () => {
+    const fixture = TestBed.createComponent(AppComponent);
 
-  //   let testField = fixture.nativeElement.querySelector('[id="test"]');
-  //   expect(testField.innerHTML).toBeTruthy("test");
-  // });
+    let testField = fixture.nativeElement.querySelector('[id="test"]');
+    expect(testField.innerHTML).toBeTruthy("test");
+  });
 });
