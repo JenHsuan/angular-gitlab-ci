@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -25,5 +26,19 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-ci');
+  });
+
+  it('Retrieve test element with debugElement.query', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    let testField = fixture.debugElement.query(By.css('[id="test"]')).nativeElement;
+    expect(testField.innerHTML).toBeTruthy("test");
+  });
+
+  it('Retrieve test element with nativeElement.querySelector', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    let testField = fixture.nativeElement.querySelector('[id="test"]');
+    expect(testField.innerHTML).toBeTruthy("test");
   });
 });
