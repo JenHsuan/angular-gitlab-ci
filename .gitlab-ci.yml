@@ -1,6 +1,9 @@
 image: node:20-bullseye
 
 cache:
+  key:
+    files:
+      - package-lock.json
   paths:
     - node_modules/
 
