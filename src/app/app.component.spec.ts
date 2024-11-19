@@ -35,6 +35,7 @@ describe('AppComponent', () => {
     expect(testField.innerHTML).toBeTruthy("test");
   });
 
+  //test
   it('Retrieve test element with nativeElement.querySelector', () => {
     const fixture = TestBed.createComponent(AppComponent);
 
