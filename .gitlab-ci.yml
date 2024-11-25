@@ -1,21 +1,9 @@
-image: node:20-bullseye
-
-cache:
-  key:
-    files:
-      - package-lock.json
-  paths:
-    - node_modules/
-
 stages:
   - build
   - test
 
-workflow:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-
 unit test:
+  image: node:20-bullseye
   stage: test
   tags:
     - test
@@ -34,7 +22,15 @@ unit test:
     reports:
       junit: unit-test-results.xml
 
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/
+
 build:
+  image: node:20-bullseye
   stage: build
   tags:
     - docker
@@ -44,3 +40,10 @@ build:
   script:
     - npm ci --legacy-peer-deps
     - npm run build
+
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/
